@@ -112,7 +112,7 @@ section {
 
 /* Hero Section */
 .hero {
-  background: url('/test/images/mainpic.jpg') center/cover no-repeat;
+  background: url('images/mainpic.jpg') center/cover no-repeat;
   color: #ffffff;
   height: 100vh;
   background-attachment: scroll;
