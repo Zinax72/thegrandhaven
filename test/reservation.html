@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservation</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #111;
+      color: #fff;
+      padding: 2rem 3rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
+      max-width: 90%;
+      width: 400px;
+    }
+
+    .modal-content h3 {
+      color: #b74b4b;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .modal-content button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.6rem;
+      background-color: #b74b4b;
+      border: none;
+      border-radius: 0.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: white;
+      color: #b74b4b;
+      border: 1px solid #b74b4b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">The Grand Haven</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rates.html">Rates</a>
+      <a href="reservation.html" class="active">Reservation</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="directions.html">Directions</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Make a Reservation</h2>
+    <form class="reservation-form">
+      <label>Check-in: <input type="date" name="checkin" required></label>
+      <label>Check-out: <input type="date" name="checkout" required></label>
+      <label>Room Type:
+        <select name="room" required>
+          <option value="">-- Select Room Type --</option>
+          <option>Deluxe Room</option>
+          <option>Beachfront Suite</option>
+          <option>Family Villa</option>
+        </select>
+      </label>
+      <label>Number of Guests: <input type="number" name="guests" min="1" required></label>
+      <label>Number of Children: <input type="number" name="children" min="0" required></label>
+      <label>Name: <input type="text" name="name" required></label>
+      <label>Email: <input type="email" name="email" required></label>
+      <button type="submit">Book Now</button>
+    </form>
+  </main>
+
+  <footer>
+    &copy; 2025 The Grand Haven
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="reservationModal">
+    <div class="modal-content">
+      <h3>Reservation Confirmed!</h3>
+      <p>Thank you for booking with The Grand Haven. We'll be in touch soon!</p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.querySelector('.reservation-form');
+    const modal = document.getElementById('reservationModal');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+      form.reset();
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+</body>
+</html>
